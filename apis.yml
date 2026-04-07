@@ -7,11 +7,11 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Transit
-  - Public Transportation
-  - Real-time
-  - Massachusetts
   - Boston
+  - Massachusetts
+  - Public Transportation
+  - Real-Time
+  - Transit
 url: https://raw.githubusercontent.com/api-evangelist/mbta/refs/heads/main/apis.yml
 created: '2025-02-24'
 modified: '2026-03-16'
@@ -26,9 +26,9 @@ apis:
     humanURL: https://www.mbta.com/developers/v3-api
     baseURL: https://api-v3.mbta.com
     tags:
-      - Transit
-      - Real-time
+      - Real-Time
       - Schedules
+      - Transit
     properties:
       - type: Documentation
         url: https://www.mbta.com/developers/v3-api
