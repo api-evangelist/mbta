@@ -16,7 +16,7 @@ The Massachusetts Bay Transportation Authority (MBTA) V3 API provides fast, easy
 ## Timestamps
 
 - **Created:** 2025-02-24 
-- **Modified:** 2026-03-16 
+- **Modified:** 2026-04-28 
 
 ## APIs
 
@@ -35,6 +35,7 @@ The MBTA V3 API provides access to MBTA schedules, alerts, and realtime informat
 - [Documentation](https://www.mbta.com/developers/v3-api)
 - [Reference](https://api-v3.mbta.com/)
 - [Getting Started](https://www.mbta.com/developers)
+- [OpenAPI](openapi/mbta-mbta-v3-api-openapi.yml)
 
 ## Common Properties
 
