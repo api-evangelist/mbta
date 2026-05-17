@@ -34,18 +34,18 @@ apis:
         url: https://www.mbta.com/developers/v3-api
       - type: Reference
         url: https://api-v3.mbta.com/
-      - type: Getting Started
+      - type: GettingStarted
         url: https://www.mbta.com/developers
       - type: OpenAPI
         url: openapi/mbta-mbta-v3-api-openapi.yml
 common:
   - type: Portal
     url: https://www.mbta.com/developers
-  - type: Sign Up
+  - type: SignUp
     url: https://api-v3.mbta.com/
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/mbta
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.mass.gov/files/documents/2017/10/27/massdot-developers-license-agreement.pdf
 maintainers:
   - FN: Kin Lane
