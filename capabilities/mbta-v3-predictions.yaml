@@ -1,0 +1,95 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: MBTA V3 API — Predictions
+  description: 'MBTA V3 API — Predictions. 1 operations. Lead operation: List predictions. Self-contained Naftiko capability
+    covering one Mbta business surface.'
+  tags:
+  - Mbta
+  - Predictions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MBTA_API_KEY: MBTA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: mbta-v3-predictions
+    baseUri: https://api-v3.mbta.com
+    description: MBTA V3 API — Predictions business capability. Self-contained, no shared references.
+    resources:
+    - name: predictions
+      path: /predictions
+      operations:
+      - name: listpredictions
+        method: GET
+        description: List predictions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: filter[stop]
+          in: query
+          type: string
+        - name: filter[route]
+          in: query
+          type: string
+        - name: filter[trip]
+          in: query
+          type: string
+        - name: filter[direction_id]
+          in: query
+          type: integer
+    authentication:
+      type: apikey
+      key: x-api-key
+      value: '{{env.MBTA_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: mbta-v3-predictions-rest
+    port: 8080
+    description: REST adapter for MBTA V3 API — Predictions. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/predictions
+      name: predictions
+      description: REST surface for predictions.
+      operations:
+      - method: GET
+        name: listpredictions
+        description: List predictions
+        call: mbta-v3-predictions.listpredictions
+        with:
+          filter[stop]: rest.filter[stop]
+          filter[route]: rest.filter[route]
+          filter[trip]: rest.filter[trip]
+          filter[direction_id]: rest.filter[direction_id]
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: mbta-v3-predictions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for MBTA V3 API — Predictions. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-predictions
+      description: List predictions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: mbta-v3-predictions.listpredictions
+      with:
+        filter[stop]: tools.filter[stop]
+        filter[route]: tools.filter[route]
+        filter[trip]: tools.filter[trip]
+        filter[direction_id]: tools.filter[direction_id]
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,132 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: MBTA V3 API — Vehicles
+  description: 'MBTA V3 API — Vehicles. 2 operations. Lead operation: List vehicles. Self-contained Naftiko capability covering
+    one Mbta business surface.'
+  tags:
+  - Mbta
+  - Vehicles
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MBTA_API_KEY: MBTA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: mbta-v3-vehicles
+    baseUri: https://api-v3.mbta.com
+    description: MBTA V3 API — Vehicles business capability. Self-contained, no shared references.
+    resources:
+    - name: vehicles
+      path: /vehicles
+      operations:
+      - name: listvehicles
+        method: GET
+        description: List vehicles
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: filter[trip]
+          in: query
+          type: string
+        - name: filter[label]
+          in: query
+          type: string
+        - name: filter[route]
+          in: query
+          type: string
+        - name: filter[direction_id]
+          in: query
+          type: integer
+        - name: filter[route_type]
+          in: query
+          type: string
+    - name: vehicles-id
+      path: /vehicles/{id}
+      operations:
+      - name: getvehicle
+        method: GET
+        description: Get vehicle
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: x-api-key
+      value: '{{env.MBTA_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: mbta-v3-vehicles-rest
+    port: 8080
+    description: REST adapter for MBTA V3 API — Vehicles. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/vehicles
+      name: vehicles
+      description: REST surface for vehicles.
+      operations:
+      - method: GET
+        name: listvehicles
+        description: List vehicles
+        call: mbta-v3-vehicles.listvehicles
+        with:
+          filter[trip]: rest.filter[trip]
+          filter[label]: rest.filter[label]
+          filter[route]: rest.filter[route]
+          filter[direction_id]: rest.filter[direction_id]
+          filter[route_type]: rest.filter[route_type]
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/vehicles/{id}
+      name: vehicles-id
+      description: REST surface for vehicles-id.
+      operations:
+      - method: GET
+        name: getvehicle
+        description: Get vehicle
+        call: mbta-v3-vehicles.getvehicle
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: mbta-v3-vehicles-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for MBTA V3 API — Vehicles. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-vehicles
+      description: List vehicles
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: mbta-v3-vehicles.listvehicles
+      with:
+        filter[trip]: tools.filter[trip]
+        filter[label]: tools.filter[label]
+        filter[route]: tools.filter[route]
+        filter[direction_id]: tools.filter[direction_id]
+        filter[route_type]: tools.filter[route_type]
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-vehicle
+      description: Get vehicle
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: mbta-v3-vehicles.getvehicle
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,52 +1,74 @@
 aid: mbta
 name: MBTA
-description: >-
-  The Massachusetts Bay Transportation Authority (MBTA) V3 API provides fast,
-  easy access to MBTA schedules, alerts, and real-time information using the
-  JSON:API format. Free API keys are available via the developer portal.
+description: The Massachusetts Bay Transportation Authority (MBTA) V3 API provides fast, easy access to MBTA schedules, alerts,
+  and real-time information using the JSON:API format. Free API keys are available via the developer portal.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Boston
-  - Massachusetts
-  - Public Transportation
-  - Real-Time
-  - Transit
+- Boston
+- Massachusetts
+- Public Transportation
+- Real-Time
+- Transit
 url: https://raw.githubusercontent.com/api-evangelist/mbta/refs/heads/main/apis.yml
 created: '2025-02-24'
-modified: '2026-04-28'
+modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: mbta:mbta-v3-api
-    name: MBTA V3 API
-    description: >-
-      The MBTA V3 API provides access to MBTA schedules, alerts, and realtime
-      information. It uses the JSON:API format and covers routes, stops,
-      trips, schedules, predictions, vehicles, and alerts.
-    humanURL: https://www.mbta.com/developers/v3-api
-    baseURL: https://api-v3.mbta.com
-    tags:
-      - Real-Time
-      - Schedules
-      - Transit
-    properties:
-      - type: Documentation
-        url: https://www.mbta.com/developers/v3-api
-      - type: Reference
-        url: https://api-v3.mbta.com/
-      - type: GettingStarted
-        url: https://www.mbta.com/developers
-      - type: OpenAPI
-        url: openapi/mbta-mbta-v3-api-openapi.yml
-common:
-  - type: Portal
-    url: https://www.mbta.com/developers
-  - type: SignUp
+- aid: mbta:mbta-v3-api
+  name: MBTA V3 API
+  description: The MBTA V3 API provides access to MBTA schedules, alerts, and realtime information. It uses the JSON:API format
+    and covers routes, stops, trips, schedules, predictions, vehicles, and alerts.
+  humanURL: https://www.mbta.com/developers/v3-api
+  baseURL: https://api-v3.mbta.com
+  tags:
+  - Real-Time
+  - Schedules
+  - Transit
+  properties:
+  - type: Documentation
+    url: https://www.mbta.com/developers/v3-api
+  - type: Reference
     url: https://api-v3.mbta.com/
-  - type: GitHubOrganization
-    url: https://github.com/mbta
-  - type: TermsOfService
-    url: https://www.mass.gov/files/documents/2017/10/27/massdot-developers-license-agreement.pdf
+  - type: GettingStarted
+    url: https://www.mbta.com/developers
+  - type: OpenAPI
+    url: openapi/mbta-mbta-v3-api-openapi.yml
+  - type: NaftikoCapability
+    url: capabilities/mbta-v3-alerts.yaml
+  - type: NaftikoCapability
+    url: capabilities/mbta-v3-facilities.yaml
+  - type: NaftikoCapability
+    url: capabilities/mbta-v3-lines.yaml
+  - type: NaftikoCapability
+    url: capabilities/mbta-v3-predictions.yaml
+  - type: NaftikoCapability
+    url: capabilities/mbta-v3-routepatterns.yaml
+  - type: NaftikoCapability
+    url: capabilities/mbta-v3-routes.yaml
+  - type: NaftikoCapability
+    url: capabilities/mbta-v3-schedules.yaml
+  - type: NaftikoCapability
+    url: capabilities/mbta-v3-services.yaml
+  - type: NaftikoCapability
+    url: capabilities/mbta-v3-shapes.yaml
+  - type: NaftikoCapability
+    url: capabilities/mbta-v3-stops.yaml
+  - type: NaftikoCapability
+    url: capabilities/mbta-v3-trips.yaml
+  - type: NaftikoCapability
+    url: capabilities/mbta-v3-vehicles.yaml
+common:
+- type: LinkedIn
+  url: https://www.linkedin.com/company/mbta
+- type: Portal
+  url: https://www.mbta.com/developers
+- type: SignUp
+  url: https://api-v3.mbta.com/
+- type: GitHubOrganization
+  url: https://github.com/mbta
+- type: TermsOfService
+  url: https://www.mass.gov/files/documents/2017/10/27/massdot-developers-license-agreement.pdf
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
