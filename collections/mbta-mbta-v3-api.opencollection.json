@@ -1,0 +1,916 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MBTA V3 API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Alerts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List alerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/alerts",
+            "params": [
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query",
+                "description": "Offset (0-based) into the collection."
+              },
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to sort by. Prepend '-' for descending."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to include."
+              }
+            ]
+          },
+          "docs": "Returns service disruption alerts."
+        },
+        {
+          "info": {
+            "name": "Get alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/alerts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to include."
+              }
+            ]
+          },
+          "docs": "Returns a single alert by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Facilities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List facilities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/facilities",
+            "params": [
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query",
+                "description": "Offset (0-based) into the collection."
+              },
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to sort by. Prepend '-' for descending."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to include."
+              }
+            ]
+          },
+          "docs": "Returns stop amenities such as elevators and bike racks."
+        },
+        {
+          "info": {
+            "name": "Get facility",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/facilities/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get facility"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Lines",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List lines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/lines",
+            "params": [
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query",
+                "description": "Offset (0-based) into the collection."
+              },
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to sort by. Prepend '-' for descending."
+              }
+            ]
+          },
+          "docs": "Returns transit lines grouped by mode."
+        },
+        {
+          "info": {
+            "name": "Get line",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/lines/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get line"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Predictions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List predictions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/predictions",
+            "params": [
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query",
+                "description": "Offset (0-based) into the collection."
+              },
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to sort by. Prepend '-' for descending."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to include."
+              },
+              {
+                "name": "filter[stop]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[route]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[trip]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[direction_id]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns real-time arrival and departure predictions."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Routes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List routes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/routes",
+            "params": [
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query",
+                "description": "Offset (0-based) into the collection."
+              },
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to sort by. Prepend '-' for descending."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to include."
+              },
+              {
+                "name": "filter[stop]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[type]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[direction_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[date]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List routes"
+        },
+        {
+          "info": {
+            "name": "Get route",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/routes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to include."
+              }
+            ]
+          },
+          "docs": "Get route"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "RoutePatterns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List route patterns",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/route_patterns",
+            "params": [
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query",
+                "description": "Offset (0-based) into the collection."
+              },
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to sort by. Prepend '-' for descending."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to include."
+              }
+            ]
+          },
+          "docs": "List route patterns"
+        },
+        {
+          "info": {
+            "name": "Get route pattern",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/route_patterns/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to include."
+              }
+            ]
+          },
+          "docs": "Get route pattern"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Schedules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/schedules",
+            "params": [
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query",
+                "description": "Offset (0-based) into the collection."
+              },
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to sort by. Prepend '-' for descending."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to include."
+              },
+              {
+                "name": "filter[date]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[direction_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[route]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[stop]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[trip]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[min_time]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[max_time]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List schedules"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Services",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List services",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/services",
+            "params": [
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query",
+                "description": "Offset (0-based) into the collection."
+              },
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to sort by. Prepend '-' for descending."
+              }
+            ]
+          },
+          "docs": "List services"
+        },
+        {
+          "info": {
+            "name": "Get service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/services/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get service"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Shapes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List shapes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/shapes",
+            "params": [
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query",
+                "description": "Offset (0-based) into the collection."
+              },
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to sort by. Prepend '-' for descending."
+              },
+              {
+                "name": "filter[route]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns trip route polylines. Requires filter[route]."
+        },
+        {
+          "info": {
+            "name": "Get shape",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/shapes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get shape"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Stops",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List stops",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/stops",
+            "params": [
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query",
+                "description": "Offset (0-based) into the collection."
+              },
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to sort by. Prepend '-' for descending."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to include."
+              },
+              {
+                "name": "filter[latitude]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[longitude]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[radius]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[route]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[route_type]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[location_type]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List stops"
+        },
+        {
+          "info": {
+            "name": "Get stop",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/stops/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to include."
+              }
+            ]
+          },
+          "docs": "Get stop"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Trips",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List trips",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/trips",
+            "params": [
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query",
+                "description": "Offset (0-based) into the collection."
+              },
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to sort by. Prepend '-' for descending."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to include."
+              },
+              {
+                "name": "filter[date]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[direction_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[route]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[route_pattern]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[name]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List trips"
+        },
+        {
+          "info": {
+            "name": "Get trip",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/trips/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to include."
+              }
+            ]
+          },
+          "docs": "Get trip"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Vehicles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List vehicles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/vehicles",
+            "params": [
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query",
+                "description": "Offset (0-based) into the collection."
+              },
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to sort by. Prepend '-' for descending."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to include."
+              },
+              {
+                "name": "filter[trip]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[label]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[route]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[direction_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[route_type]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List vehicles"
+        },
+        {
+          "info": {
+            "name": "Get vehicle",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/vehicles/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to include."
+              }
+            ]
+          },
+          "docs": "Get vehicle"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
