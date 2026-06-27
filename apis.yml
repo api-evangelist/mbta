@@ -41,7 +41,7 @@ common:
     url: https://www.linkedin.com/company/mbta
   - type: Portal
     url: https://www.mbta.com/developers
-  - type: SignUp
+  - type: Signup
     url: https://api-v3.mbta.com/
   - type: GitHubOrganization
     url: https://github.com/mbta
