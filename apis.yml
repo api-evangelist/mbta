@@ -37,6 +37,10 @@ apis:
       - type: OpenAPI
         url: openapi/mbta-mbta-v3-api-openapi.yml
 common:
+  - type: DomainSecurity
+    url: security/mbta-domain-security.yml
+  - type: Authentication
+    url: authentication/mbta-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/mbta
   - type: Portal
@@ -47,6 +51,8 @@ common:
     url: https://github.com/mbta
   - type: TermsOfService
     url: https://www.mass.gov/files/documents/2017/10/27/massdot-developers-license-agreement.pdf
+  - url: https://www.mbta.com/news/rss.xml
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

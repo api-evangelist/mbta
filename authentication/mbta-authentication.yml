@@ -1,0 +1,22 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/mbta-mbta-v3-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  - query
+schemes:
+- name: apiKeyHeader
+  type: apiKey
+  in: header
+  parameter: x-api-key
+  sources:
+  - openapi/mbta-mbta-v3-api-openapi.yml
+- name: apiKeyQuery
+  type: apiKey
+  in: query
+  parameter: api_key
+  sources:
+  - openapi/mbta-mbta-v3-api-openapi.yml
