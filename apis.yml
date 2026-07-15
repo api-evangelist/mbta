@@ -37,6 +37,8 @@ apis:
       - type: OpenAPI
         url: openapi/mbta-mbta-v3-api-openapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/mbta-agentic-access.yml
   - type: DomainSecurity
     url: security/mbta-domain-security.yml
   - type: Authentication
