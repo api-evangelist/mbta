@@ -1,0 +1,113 @@
+openapi: 3.0.3
+info:
+  title: MBTA V3 Alerts Predictions API
+  description: The MBTA V3 API provides fast, easy access to Massachusetts Bay Transportation Authority schedules, alerts, and real-time information. Returns JSON:API formatted responses (application/vnd.api+json) for routes, stops, trips, schedules, predictions, vehicles, alerts, lines, facilities, services, shapes, and route patterns. Free API keys are available via the developer portal for higher rate limits.
+  version: '3.0'
+  contact:
+    name: MBTA Developers
+    url: https://www.mbta.com/developers
+  termsOfService: https://www.mass.gov/files/documents/2017/10/27/massdot-developers-license-agreement.pdf
+servers:
+- url: https://api-v3.mbta.com
+  description: Production
+security:
+- apiKeyHeader: []
+- apiKeyQuery: []
+tags:
+- name: Predictions
+  description: Real-time arrival and departure forecasts
+paths:
+  /predictions:
+    get:
+      operationId: listPredictions
+      summary: List predictions
+      description: Returns real-time arrival and departure predictions.
+      tags:
+      - Predictions
+      parameters:
+      - $ref: '#/components/parameters/PageOffset'
+      - $ref: '#/components/parameters/PageLimit'
+      - $ref: '#/components/parameters/Sort'
+      - $ref: '#/components/parameters/Include'
+      - name: filter[stop]
+        in: query
+        schema:
+          type: string
+      - name: filter[route]
+        in: query
+        schema:
+          type: string
+      - name: filter[trip]
+        in: query
+        schema:
+          type: string
+      - name: filter[direction_id]
+        in: query
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+      responses:
+        '200':
+          $ref: '#/components/responses/JsonApiOk'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+components:
+  parameters:
+    Sort:
+      name: sort
+      in: query
+      description: Comma-separated list of fields to sort by. Prepend '-' for descending.
+      schema:
+        type: string
+    PageLimit:
+      name: page[limit]
+      in: query
+      description: Maximum number of resources to return.
+      schema:
+        type: integer
+        minimum: 1
+    PageOffset:
+      name: page[offset]
+      in: query
+      description: Offset (0-based) into the collection.
+      schema:
+        type: integer
+        minimum: 0
+    Include:
+      name: include
+      in: query
+      description: Comma-separated list of relationships to include.
+      schema:
+        type: string
+  responses:
+    BadRequest:
+      description: Bad request - invalid parameters.
+    JsonApiOk:
+      description: Successful JSON:API response.
+      content:
+        application/vnd.api+json:
+          schema:
+            type: object
+            properties:
+              data: {}
+              included:
+                type: array
+                items: {}
+              links:
+                type: object
+              meta:
+                type: object
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      in: header
+      name: x-api-key
+    apiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+externalDocs:
+  description: MBTA V3 API Documentation
+  url: https://www.mbta.com/developers/v3-api
