@@ -4,7 +4,20 @@ description: >-
   The Massachusetts Bay Transportation Authority (MBTA) V3 API provides fast, easy access to MBTA schedules, alerts, and
   real-time information using the JSON:API format. Free API keys are available via the developer portal.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/mbta.png
 tags:
   - Boston
   - Massachusetts
@@ -16,26 +29,198 @@ created: '2025-02-24'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: mbta:mbta-v3-api
-    name: MBTA V3 API
-    description: >-
-      The MBTA V3 API provides access to MBTA schedules, alerts, and realtime information. It uses the JSON:API format
-      and covers routes, stops, trips, schedules, predictions, vehicles, and alerts.
-    humanURL: https://www.mbta.com/developers/v3-api
-    baseURL: https://api-v3.mbta.com
-    tags:
-      - Real-Time
-      - Schedules
-      - Transit
-    properties:
-      - type: Documentation
-        url: https://www.mbta.com/developers/v3-api
-      - type: Reference
-        url: https://api-v3.mbta.com/
-      - type: GettingStarted
-        url: https://www.mbta.com/developers
-      - type: OpenAPI
-        url: openapi/mbta-mbta-v3-api-openapi.yml
+- aid: mbta:mbta-alerts-api
+  name: MBTA Alerts API
+  description: Service disruption communications
+  humanURL: https://www.mbta.com/developers/v3-api
+  baseURL: https://api-v3.mbta.com
+  tags:
+  - Alerts
+  properties:
+  - type: OpenAPI
+    url: openapi/mbta-alerts-api-openapi.yml
+  - type: Documentation
+    url: https://www.mbta.com/developers/v3-api
+  - type: Reference
+    url: https://api-v3.mbta.com/
+  - type: GettingStarted
+    url: https://www.mbta.com/developers
+- aid: mbta:mbta-facilities-api
+  name: MBTA Facilities API
+  description: Stop amenities such as elevators and bike racks
+  humanURL: https://www.mbta.com/developers/v3-api
+  baseURL: https://api-v3.mbta.com
+  tags:
+  - Facilities
+  properties:
+  - type: OpenAPI
+    url: openapi/mbta-facilities-api-openapi.yml
+  - type: Documentation
+    url: https://www.mbta.com/developers/v3-api
+  - type: Reference
+    url: https://api-v3.mbta.com/
+  - type: GettingStarted
+    url: https://www.mbta.com/developers
+- aid: mbta:mbta-lines-api
+  name: MBTA Lines API
+  description: Transit lines grouped by mode
+  humanURL: https://www.mbta.com/developers/v3-api
+  baseURL: https://api-v3.mbta.com
+  tags:
+  - Lines
+  properties:
+  - type: OpenAPI
+    url: openapi/mbta-lines-api-openapi.yml
+  - type: Documentation
+    url: https://www.mbta.com/developers/v3-api
+  - type: Reference
+    url: https://api-v3.mbta.com/
+  - type: GettingStarted
+    url: https://www.mbta.com/developers
+- aid: mbta:mbta-predictions-api
+  name: MBTA Predictions API
+  description: Real-time arrival and departure forecasts
+  humanURL: https://www.mbta.com/developers/v3-api
+  baseURL: https://api-v3.mbta.com
+  tags:
+  - Predictions
+  properties:
+  - type: OpenAPI
+    url: openapi/mbta-predictions-api-openapi.yml
+  - type: Documentation
+    url: https://www.mbta.com/developers/v3-api
+  - type: Reference
+    url: https://api-v3.mbta.com/
+  - type: GettingStarted
+    url: https://www.mbta.com/developers
+- aid: mbta:mbta-routepatterns-api
+  name: MBTA RoutePatterns API
+  description: Possible travel patterns within a route
+  humanURL: https://www.mbta.com/developers/v3-api
+  baseURL: https://api-v3.mbta.com
+  tags:
+  - RoutePatterns
+  properties:
+  - type: OpenAPI
+    url: openapi/mbta-routepatterns-api-openapi.yml
+  - type: Documentation
+    url: https://www.mbta.com/developers/v3-api
+  - type: Reference
+    url: https://api-v3.mbta.com/
+  - type: GettingStarted
+    url: https://www.mbta.com/developers
+- aid: mbta:mbta-routes-api
+  name: MBTA Routes API
+  description: Route information per line
+  humanURL: https://www.mbta.com/developers/v3-api
+  baseURL: https://api-v3.mbta.com
+  tags:
+  - Routes
+  properties:
+  - type: OpenAPI
+    url: openapi/mbta-routes-api-openapi.yml
+  - type: Documentation
+    url: https://www.mbta.com/developers/v3-api
+  - type: Reference
+    url: https://api-v3.mbta.com/
+  - type: GettingStarted
+    url: https://www.mbta.com/developers
+- aid: mbta:mbta-schedules-api
+  name: MBTA Schedules API
+  description: Scheduled stop times
+  humanURL: https://www.mbta.com/developers/v3-api
+  baseURL: https://api-v3.mbta.com
+  tags:
+  - Schedules
+  properties:
+  - type: OpenAPI
+    url: openapi/mbta-schedules-api-openapi.yml
+  - type: Documentation
+    url: https://www.mbta.com/developers/v3-api
+  - type: Reference
+    url: https://api-v3.mbta.com/
+  - type: GettingStarted
+    url: https://www.mbta.com/developers
+- aid: mbta:mbta-services-api
+  name: MBTA Services API
+  description: Operational dates and frequencies
+  humanURL: https://www.mbta.com/developers/v3-api
+  baseURL: https://api-v3.mbta.com
+  tags:
+  - Services
+  properties:
+  - type: OpenAPI
+    url: openapi/mbta-services-api-openapi.yml
+  - type: Documentation
+    url: https://www.mbta.com/developers/v3-api
+  - type: Reference
+    url: https://api-v3.mbta.com/
+  - type: GettingStarted
+    url: https://www.mbta.com/developers
+- aid: mbta:mbta-shapes-api
+  name: MBTA Shapes API
+  description: Trip route polylines for mapping
+  humanURL: https://www.mbta.com/developers/v3-api
+  baseURL: https://api-v3.mbta.com
+  tags:
+  - Shapes
+  properties:
+  - type: OpenAPI
+    url: openapi/mbta-shapes-api-openapi.yml
+  - type: Documentation
+    url: https://www.mbta.com/developers/v3-api
+  - type: Reference
+    url: https://api-v3.mbta.com/
+  - type: GettingStarted
+    url: https://www.mbta.com/developers
+- aid: mbta:mbta-stops-api
+  name: MBTA Stops API
+  description: Boarding and disembarking locations
+  humanURL: https://www.mbta.com/developers/v3-api
+  baseURL: https://api-v3.mbta.com
+  tags:
+  - Stops
+  properties:
+  - type: OpenAPI
+    url: openapi/mbta-stops-api-openapi.yml
+  - type: Documentation
+    url: https://www.mbta.com/developers/v3-api
+  - type: Reference
+    url: https://api-v3.mbta.com/
+  - type: GettingStarted
+    url: https://www.mbta.com/developers
+- aid: mbta:mbta-trips-api
+  name: MBTA Trips API
+  description: Vehicle journey definitions
+  humanURL: https://www.mbta.com/developers/v3-api
+  baseURL: https://api-v3.mbta.com
+  tags:
+  - Trips
+  properties:
+  - type: OpenAPI
+    url: openapi/mbta-trips-api-openapi.yml
+  - type: Documentation
+    url: https://www.mbta.com/developers/v3-api
+  - type: Reference
+    url: https://api-v3.mbta.com/
+  - type: GettingStarted
+    url: https://www.mbta.com/developers
+- aid: mbta:mbta-vehicles-api
+  name: MBTA Vehicles API
+  description: Vehicle movement and position data
+  humanURL: https://www.mbta.com/developers/v3-api
+  baseURL: https://api-v3.mbta.com
+  tags:
+  - Vehicles
+  properties:
+  - type: OpenAPI
+    url: openapi/mbta-vehicles-api-openapi.yml
+  - type: Documentation
+    url: https://www.mbta.com/developers/v3-api
+  - type: Reference
+    url: https://api-v3.mbta.com/
+  - type: GettingStarted
+    url: https://www.mbta.com/developers
 common:
   - type: AgenticAccess
     url: agentic-access/mbta-agentic-access.yml
