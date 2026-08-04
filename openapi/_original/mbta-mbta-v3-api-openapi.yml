@@ -1,0 +1,468 @@
+openapi: 3.0.3
+info:
+  title: MBTA V3 API
+  description: >-
+    The MBTA V3 API provides fast, easy access to Massachusetts Bay
+    Transportation Authority schedules, alerts, and real-time information.
+    Returns JSON:API formatted responses (application/vnd.api+json) for
+    routes, stops, trips, schedules, predictions, vehicles, alerts, lines,
+    facilities, services, shapes, and route patterns. Free API keys are
+    available via the developer portal for higher rate limits.
+  version: '3.0'
+  contact:
+    name: MBTA Developers
+    url: https://www.mbta.com/developers
+  termsOfService: https://www.mass.gov/files/documents/2017/10/27/massdot-developers-license-agreement.pdf
+externalDocs:
+  description: MBTA V3 API Documentation
+  url: https://www.mbta.com/developers/v3-api
+servers:
+  - url: https://api-v3.mbta.com
+    description: Production
+tags:
+  - name: Alerts
+    description: Service disruption communications
+  - name: Facilities
+    description: Stop amenities such as elevators and bike racks
+  - name: Lines
+    description: Transit lines grouped by mode
+  - name: Predictions
+    description: Real-time arrival and departure forecasts
+  - name: Routes
+    description: Route information per line
+  - name: RoutePatterns
+    description: Possible travel patterns within a route
+  - name: Schedules
+    description: Scheduled stop times
+  - name: Services
+    description: Operational dates and frequencies
+  - name: Shapes
+    description: Trip route polylines for mapping
+  - name: Stops
+    description: Boarding and disembarking locations
+  - name: Trips
+    description: Vehicle journey definitions
+  - name: Vehicles
+    description: Vehicle movement and position data
+  - name: StopEvents
+    description: Experimental endpoint for stop event data
+security:
+  - apiKeyHeader: []
+  - apiKeyQuery: []
+paths:
+  /alerts:
+    get:
+      operationId: listAlerts
+      summary: List alerts
+      description: Returns service disruption alerts.
+      tags: [Alerts]
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Include'
+      responses:
+        '200': { $ref: '#/components/responses/JsonApiOk' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+  /alerts/{id}:
+    get:
+      operationId: getAlert
+      summary: Get alert
+      description: Returns a single alert by ID.
+      tags: [Alerts]
+      parameters:
+        - $ref: '#/components/parameters/IdPath'
+        - $ref: '#/components/parameters/Include'
+      responses:
+        '200': { $ref: '#/components/responses/JsonApiOk' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /facilities:
+    get:
+      operationId: listFacilities
+      summary: List facilities
+      description: Returns stop amenities such as elevators and bike racks.
+      tags: [Facilities]
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Include'
+      responses:
+        '200': { $ref: '#/components/responses/JsonApiOk' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+  /facilities/{id}:
+    get:
+      operationId: getFacility
+      summary: Get facility
+      tags: [Facilities]
+      parameters:
+        - $ref: '#/components/parameters/IdPath'
+      responses:
+        '200': { $ref: '#/components/responses/JsonApiOk' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /lines:
+    get:
+      operationId: listLines
+      summary: List lines
+      description: Returns transit lines grouped by mode.
+      tags: [Lines]
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+        - $ref: '#/components/parameters/Sort'
+      responses:
+        '200': { $ref: '#/components/responses/JsonApiOk' }
+  /lines/{id}:
+    get:
+      operationId: getLine
+      summary: Get line
+      tags: [Lines]
+      parameters:
+        - $ref: '#/components/parameters/IdPath'
+      responses:
+        '200': { $ref: '#/components/responses/JsonApiOk' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /predictions:
+    get:
+      operationId: listPredictions
+      summary: List predictions
+      description: Returns real-time arrival and departure predictions.
+      tags: [Predictions]
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Include'
+        - name: filter[stop]
+          in: query
+          schema: { type: string }
+        - name: filter[route]
+          in: query
+          schema: { type: string }
+        - name: filter[trip]
+          in: query
+          schema: { type: string }
+        - name: filter[direction_id]
+          in: query
+          schema: { type: integer, enum: [0, 1] }
+      responses:
+        '200': { $ref: '#/components/responses/JsonApiOk' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+  /routes:
+    get:
+      operationId: listRoutes
+      summary: List routes
+      tags: [Routes]
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Include'
+        - name: filter[stop]
+          in: query
+          schema: { type: string }
+        - name: filter[type]
+          in: query
+          schema: { type: string }
+        - name: filter[direction_id]
+          in: query
+          schema: { type: integer, enum: [0, 1] }
+        - name: filter[date]
+          in: query
+          schema: { type: string, format: date }
+      responses:
+        '200': { $ref: '#/components/responses/JsonApiOk' }
+  /routes/{id}:
+    get:
+      operationId: getRoute
+      summary: Get route
+      tags: [Routes]
+      parameters:
+        - $ref: '#/components/parameters/IdPath'
+        - $ref: '#/components/parameters/Include'
+      responses:
+        '200': { $ref: '#/components/responses/JsonApiOk' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /route_patterns:
+    get:
+      operationId: listRoutePatterns
+      summary: List route patterns
+      tags: [RoutePatterns]
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Include'
+      responses:
+        '200': { $ref: '#/components/responses/JsonApiOk' }
+  /route_patterns/{id}:
+    get:
+      operationId: getRoutePattern
+      summary: Get route pattern
+      tags: [RoutePatterns]
+      parameters:
+        - $ref: '#/components/parameters/IdPath'
+        - $ref: '#/components/parameters/Include'
+      responses:
+        '200': { $ref: '#/components/responses/JsonApiOk' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /schedules:
+    get:
+      operationId: listSchedules
+      summary: List schedules
+      tags: [Schedules]
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Include'
+        - name: filter[date]
+          in: query
+          schema: { type: string, format: date }
+        - name: filter[direction_id]
+          in: query
+          schema: { type: integer, enum: [0, 1] }
+        - name: filter[route]
+          in: query
+          schema: { type: string }
+        - name: filter[stop]
+          in: query
+          schema: { type: string }
+        - name: filter[trip]
+          in: query
+          schema: { type: string }
+        - name: filter[min_time]
+          in: query
+          schema: { type: string }
+        - name: filter[max_time]
+          in: query
+          schema: { type: string }
+      responses:
+        '200': { $ref: '#/components/responses/JsonApiOk' }
+  /services:
+    get:
+      operationId: listServices
+      summary: List services
+      tags: [Services]
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+        - $ref: '#/components/parameters/Sort'
+      responses:
+        '200': { $ref: '#/components/responses/JsonApiOk' }
+  /services/{id}:
+    get:
+      operationId: getService
+      summary: Get service
+      tags: [Services]
+      parameters:
+        - $ref: '#/components/parameters/IdPath'
+      responses:
+        '200': { $ref: '#/components/responses/JsonApiOk' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /shapes:
+    get:
+      operationId: listShapes
+      summary: List shapes
+      description: Returns trip route polylines. Requires filter[route].
+      tags: [Shapes]
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+        - $ref: '#/components/parameters/Sort'
+        - name: filter[route]
+          in: query
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { $ref: '#/components/responses/JsonApiOk' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+  /shapes/{id}:
+    get:
+      operationId: getShape
+      summary: Get shape
+      tags: [Shapes]
+      parameters:
+        - $ref: '#/components/parameters/IdPath'
+      responses:
+        '200': { $ref: '#/components/responses/JsonApiOk' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /stops:
+    get:
+      operationId: listStops
+      summary: List stops
+      tags: [Stops]
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Include'
+        - name: filter[latitude]
+          in: query
+          schema: { type: number, format: float }
+        - name: filter[longitude]
+          in: query
+          schema: { type: number, format: float }
+        - name: filter[radius]
+          in: query
+          schema: { type: number, format: float }
+        - name: filter[route]
+          in: query
+          schema: { type: string }
+        - name: filter[route_type]
+          in: query
+          schema: { type: string }
+        - name: filter[location_type]
+          in: query
+          schema: { type: string }
+      responses:
+        '200': { $ref: '#/components/responses/JsonApiOk' }
+  /stops/{id}:
+    get:
+      operationId: getStop
+      summary: Get stop
+      tags: [Stops]
+      parameters:
+        - $ref: '#/components/parameters/IdPath'
+        - $ref: '#/components/parameters/Include'
+      responses:
+        '200': { $ref: '#/components/responses/JsonApiOk' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /trips:
+    get:
+      operationId: listTrips
+      summary: List trips
+      tags: [Trips]
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Include'
+        - name: filter[date]
+          in: query
+          schema: { type: string, format: date }
+        - name: filter[direction_id]
+          in: query
+          schema: { type: integer, enum: [0, 1] }
+        - name: filter[route]
+          in: query
+          schema: { type: string }
+        - name: filter[route_pattern]
+          in: query
+          schema: { type: string }
+        - name: filter[name]
+          in: query
+          schema: { type: string }
+      responses:
+        '200': { $ref: '#/components/responses/JsonApiOk' }
+  /trips/{id}:
+    get:
+      operationId: getTrip
+      summary: Get trip
+      tags: [Trips]
+      parameters:
+        - $ref: '#/components/parameters/IdPath'
+        - $ref: '#/components/parameters/Include'
+      responses:
+        '200': { $ref: '#/components/responses/JsonApiOk' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /vehicles:
+    get:
+      operationId: listVehicles
+      summary: List vehicles
+      tags: [Vehicles]
+      parameters:
+        - $ref: '#/components/parameters/PageOffset'
+        - $ref: '#/components/parameters/PageLimit'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Include'
+        - name: filter[trip]
+          in: query
+          schema: { type: string }
+        - name: filter[label]
+          in: query
+          schema: { type: string }
+        - name: filter[route]
+          in: query
+          schema: { type: string }
+        - name: filter[direction_id]
+          in: query
+          schema: { type: integer, enum: [0, 1] }
+        - name: filter[route_type]
+          in: query
+          schema: { type: string }
+      responses:
+        '200': { $ref: '#/components/responses/JsonApiOk' }
+  /vehicles/{id}:
+    get:
+      operationId: getVehicle
+      summary: Get vehicle
+      tags: [Vehicles]
+      parameters:
+        - $ref: '#/components/parameters/IdPath'
+        - $ref: '#/components/parameters/Include'
+      responses:
+        '200': { $ref: '#/components/responses/JsonApiOk' }
+        '404': { $ref: '#/components/responses/NotFound' }
+components:
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      in: header
+      name: x-api-key
+    apiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+  parameters:
+    PageOffset:
+      name: page[offset]
+      in: query
+      description: Offset (0-based) into the collection.
+      schema: { type: integer, minimum: 0 }
+    PageLimit:
+      name: page[limit]
+      in: query
+      description: Maximum number of resources to return.
+      schema: { type: integer, minimum: 1 }
+    Sort:
+      name: sort
+      in: query
+      description: Comma-separated list of fields to sort by. Prepend '-' for descending.
+      schema: { type: string }
+    Include:
+      name: include
+      in: query
+      description: Comma-separated list of relationships to include.
+      schema: { type: string }
+    IdPath:
+      name: id
+      in: path
+      required: true
+      schema: { type: string }
+  responses:
+    JsonApiOk:
+      description: Successful JSON:API response.
+      content:
+        application/vnd.api+json:
+          schema:
+            type: object
+            properties:
+              data: {}
+              included:
+                type: array
+                items: {}
+              links:
+                type: object
+              meta:
+                type: object
+    BadRequest:
+      description: Bad request - invalid parameters.
+    Forbidden:
+      description: Forbidden - invalid API key or rate limit exceeded.
+    NotFound:
+      description: Resource not found.
+    RateLimited:
+      description: Too many requests.

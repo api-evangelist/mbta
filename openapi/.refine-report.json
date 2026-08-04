@@ -1,0 +1,36 @@
+{
+  "provider": "mbta",
+  "sources": [
+    "mbta-alerts-api-openapi.yml",
+    "mbta-facilities-api-openapi.yml",
+    "mbta-lines-api-openapi.yml",
+    "mbta-predictions-api-openapi.yml",
+    "mbta-routepatterns-api-openapi.yml",
+    "mbta-routes-api-openapi.yml",
+    "mbta-schedules-api-openapi.yml",
+    "mbta-services-api-openapi.yml",
+    "mbta-shapes-api-openapi.yml",
+    "mbta-stops-api-openapi.yml",
+    "mbta-trips-api-openapi.yml",
+    "mbta-vehicles-api-openapi.yml"
+  ],
+  "outputs": [
+    "mbta-alerts-api-openapi.yml",
+    "mbta-facilities-api-openapi.yml",
+    "mbta-lines-api-openapi.yml",
+    "mbta-predictions-api-openapi.yml",
+    "mbta-routepatterns-api-openapi.yml",
+    "mbta-routes-api-openapi.yml",
+    "mbta-schedules-api-openapi.yml",
+    "mbta-services-api-openapi.yml",
+    "mbta-shapes-api-openapi.yml",
+    "mbta-stops-api-openapi.yml",
+    "mbta-trips-api-openapi.yml",
+    "mbta-vehicles-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
