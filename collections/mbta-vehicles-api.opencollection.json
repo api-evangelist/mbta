@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MBTA V3 Alerts Vehicles API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Vehicles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List vehicles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/vehicles",
+            "params": [
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query",
+                "description": "Offset (0-based) into the collection."
+              },
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to sort by. Prepend '-' for descending."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to include."
+              },
+              {
+                "name": "filter[trip]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[label]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[route]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[direction_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[route_type]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List vehicles"
+        },
+        {
+          "info": {
+            "name": "Get vehicle",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/vehicles/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to include."
+              }
+            ]
+          },
+          "docs": "Get vehicle"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

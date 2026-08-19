@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MBTA V3 Alerts Schedules API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Schedules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/schedules",
+            "params": [
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query",
+                "description": "Offset (0-based) into the collection."
+              },
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to sort by. Prepend '-' for descending."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to include."
+              },
+              {
+                "name": "filter[date]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[direction_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[route]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[stop]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[trip]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[min_time]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[max_time]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List schedules"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

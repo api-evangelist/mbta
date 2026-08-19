@@ -1,0 +1,360 @@
+{
+  "item": [
+    {
+      "id": "bfde3661-ff93-47ec-8f60-f3b52901237e",
+      "name": "Routes",
+      "description": {
+        "content": "Route information per line",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7338fd86-a352-4886-a25a-dad4375c027e",
+          "name": "List routes",
+          "request": {
+            "name": "List routes",
+            "description": {},
+            "url": {
+              "path": [
+                "routes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[offset]",
+                  "value": "<integer>",
+                  "description": "Offset (0-based) into the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "page[limit]",
+                  "value": "<integer>",
+                  "description": "Maximum number of resources to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to sort by. Prepend '-' for descending."
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Comma-separated list of relationships to include."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[stop]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[type]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[direction_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[date]",
+                  "value": "<date>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "17e2e051-d8b0-4d4f-beb0-a8b3661908bd",
+              "name": "Successful JSON:API response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[offset]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[limit]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[stop]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[type]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[direction_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[date]",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": \"\",\n  \"links\": {},\n  \"meta\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "86ed592d-bdca-4a6c-a367-10c80aa09d07",
+          "name": "Get route",
+          "request": {
+            "name": "Get route",
+            "description": {},
+            "url": {
+              "path": [
+                "routes",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Comma-separated list of relationships to include."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a9067486-0eec-4491-bf59-1bd6a4f7d52b",
+              "name": "Successful JSON:API response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "routes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": \"\",\n  \"links\": {},\n  \"meta\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a64601fa-eed8-4678-ac94-7ced853ec127",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "routes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-v3.mbta.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "365ce108-f74b-4340-800b-801cdca7cb1f",
+    "name": "MBTA V3 Alerts Routes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The MBTA V3 API provides fast, easy access to Massachusetts Bay Transportation Authority schedules, alerts, and real-time information. Returns JSON:API formatted responses (application/vnd.api+json) for routes, stops, trips, schedules, predictions, vehicles, alerts, lines, facilities, services, shapes, and route patterns. Free API keys are available via the developer portal for higher rate limits.\n\nContact Support:\n Name: MBTA Developers",
+      "type": "text/plain"
+    }
+  }
+}

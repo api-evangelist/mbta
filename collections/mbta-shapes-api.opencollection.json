@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MBTA V3 Alerts Shapes API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shapes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List shapes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/shapes",
+            "params": [
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query",
+                "description": "Offset (0-based) into the collection."
+              },
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to sort by. Prepend '-' for descending."
+              },
+              {
+                "name": "filter[route]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns trip route polylines. Requires filter[route]."
+        },
+        {
+          "info": {
+            "name": "Get shape",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/shapes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get shape"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

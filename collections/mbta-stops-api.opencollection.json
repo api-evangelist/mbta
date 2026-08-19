@@ -1,0 +1,117 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MBTA V3 Alerts Stops API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stops",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List stops",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/stops",
+            "params": [
+              {
+                "name": "page[offset]",
+                "value": "",
+                "type": "query",
+                "description": "Offset (0-based) into the collection."
+              },
+              {
+                "name": "page[limit]",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of resources to return."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to sort by. Prepend '-' for descending."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to include."
+              },
+              {
+                "name": "filter[latitude]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[longitude]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[radius]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[route]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[route_type]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[location_type]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List stops"
+        },
+        {
+          "info": {
+            "name": "Get stop",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-v3.mbta.com/stops/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to include."
+              }
+            ]
+          },
+          "docs": "Get stop"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

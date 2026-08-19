@@ -1,0 +1,229 @@
+{
+  "item": [
+    {
+      "id": "ec98c224-8da3-47b1-aa51-2b7947f48ee9",
+      "name": "Schedules",
+      "description": {
+        "content": "Scheduled stop times",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7f3e42e3-a134-450b-ac0e-38a917126257",
+          "name": "List schedules",
+          "request": {
+            "name": "List schedules",
+            "description": {},
+            "url": {
+              "path": [
+                "schedules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page[offset]",
+                  "value": "<integer>",
+                  "description": "Offset (0-based) into the collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "page[limit]",
+                  "value": "<integer>",
+                  "description": "Maximum number of resources to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to sort by. Prepend '-' for descending."
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Comma-separated list of relationships to include."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[date]",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[direction_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[route]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[stop]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[trip]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[min_time]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[max_time]",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "88eaea7b-5ea4-4077-96f0-dfa91ea7d54c",
+              "name": "Successful JSON:API response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page[offset]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page[limit]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[date]",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "filter[direction_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[route]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[stop]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[trip]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[min_time]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[max_time]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": \"\",\n  \"links\": {},\n  \"meta\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-v3.mbta.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "da9764fd-54d2-4070-a235-4b6edc2436c8",
+    "name": "MBTA V3 Alerts Schedules API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The MBTA V3 API provides fast, easy access to Massachusetts Bay Transportation Authority schedules, alerts, and real-time information. Returns JSON:API formatted responses (application/vnd.api+json) for routes, stops, trips, schedules, predictions, vehicles, alerts, lines, facilities, services, shapes, and route patterns. Free API keys are available via the developer portal for higher rate limits.\n\nContact Support:\n Name: MBTA Developers",
+      "type": "text/plain"
+    }
+  }
+}
