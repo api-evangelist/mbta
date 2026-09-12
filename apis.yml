@@ -235,6 +235,8 @@ apis:
   - type: GettingStarted
     url: https://www.mbta.com/developers
 common:
+  - type: Website
+    url: https://www.mbta.com/
   - type: AgenticAccess
     url: agentic-access/mbta-agentic-access.yml
   - type: DomainSecurity
