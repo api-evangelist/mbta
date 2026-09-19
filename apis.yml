@@ -144,6 +144,8 @@ apis:
   humanURL: https://www.mbta.com/developers/v3-api
   baseURL: https://api-v3.mbta.com
   tags:
+  - Schedule
+  tags_raw:
   - Schedules
   properties:
   - type: OpenAPI
