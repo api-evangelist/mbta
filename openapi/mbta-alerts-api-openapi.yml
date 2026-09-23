@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: MBTA V3 Alerts API
   description: The MBTA V3 API provides fast, easy access to Massachusetts Bay Transportation Authority schedules, alerts, and real-time information. Returns JSON:API formatted responses (application/vnd.api+json) for routes, stops, trips, schedules, predictions, vehicles, alerts, lines, facilities, services, shapes, and route patterns. Free API keys are available via the developer portal for higher rate limits.
@@ -55,12 +55,10 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    RateLimited:
-      description: Too many requests.
-    BadRequest:
-      description: Bad request - invalid parameters.
     NotFound:
       description: Resource not found.
+    RateLimited:
+      description: Too many requests.
     Forbidden:
       description: Forbidden - invalid API key or rate limit exceeded.
     JsonApiOk:
@@ -78,11 +76,13 @@ components:
                 type: object
               meta:
                 type: object
+    BadRequest:
+      description: Bad request - invalid parameters.
   parameters:
-    Sort:
-      name: sort
-      in: query
-      description: Comma-separated list of fields to sort by. Prepend '-' for descending.
+    IdPath:
+      name: id
+      in: path
+      required: true
       schema:
         type: string
     PageOffset:
@@ -98,10 +98,10 @@ components:
       description: Comma-separated list of relationships to include.
       schema:
         type: string
-    IdPath:
-      name: id
-      in: path
-      required: true
+    Sort:
+      name: sort
+      in: query
+      description: Comma-separated list of fields to sort by. Prepend '-' for descending.
       schema:
         type: string
     PageLimit:

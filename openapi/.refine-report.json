@@ -1,18 +1,7 @@
 {
   "provider": "mbta",
   "sources": [
-    "mbta-alerts-api-openapi.yml",
-    "mbta-facilities-api-openapi.yml",
-    "mbta-lines-api-openapi.yml",
-    "mbta-predictions-api-openapi.yml",
-    "mbta-routepatterns-api-openapi.yml",
-    "mbta-routes-api-openapi.yml",
-    "mbta-schedules-api-openapi.yml",
-    "mbta-services-api-openapi.yml",
-    "mbta-shapes-api-openapi.yml",
-    "mbta-stops-api-openapi.yml",
-    "mbta-trips-api-openapi.yml",
-    "mbta-vehicles-api-openapi.yml"
+    "_original/mbta-mbta-v3-api-openapi.yml"
   ],
   "outputs": [
     "mbta-alerts-api-openapi.yml",
@@ -31,6 +20,23 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "mbta-mbta-v3-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "mbta-alerts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mbta-facilities-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mbta-lines-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mbta-predictions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mbta-routepatterns-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mbta-routes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mbta-schedules-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mbta-services-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mbta-shapes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mbta-stops-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mbta-trips-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mbta-vehicles-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
