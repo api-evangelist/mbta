@@ -65,19 +65,6 @@ paths:
           $ref: '#/components/responses/JsonApiOk'
 components:
   parameters:
-    PageOffset:
-      name: page[offset]
-      in: query
-      description: Offset (0-based) into the collection.
-      schema:
-        type: integer
-        minimum: 0
-    Include:
-      name: include
-      in: query
-      description: Comma-separated list of relationships to include.
-      schema:
-        type: string
     Sort:
       name: sort
       in: query
@@ -91,6 +78,19 @@ components:
       schema:
         type: integer
         minimum: 1
+    Include:
+      name: include
+      in: query
+      description: Comma-separated list of relationships to include.
+      schema:
+        type: string
+    PageOffset:
+      name: page[offset]
+      in: query
+      description: Offset (0-based) into the collection.
+      schema:
+        type: integer
+        minimum: 0
   responses:
     JsonApiOk:
       description: Successful JSON:API response.

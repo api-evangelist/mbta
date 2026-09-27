@@ -57,10 +57,6 @@ components:
   responses:
     NotFound:
       description: Resource not found.
-    RateLimited:
-      description: Too many requests.
-    Forbidden:
-      description: Forbidden - invalid API key or rate limit exceeded.
     JsonApiOk:
       description: Successful JSON:API response.
       content:
@@ -76,9 +72,19 @@ components:
                 type: object
               meta:
                 type: object
+    Forbidden:
+      description: Forbidden - invalid API key or rate limit exceeded.
+    RateLimited:
+      description: Too many requests.
     BadRequest:
       description: Bad request - invalid parameters.
   parameters:
+    Sort:
+      name: sort
+      in: query
+      description: Comma-separated list of fields to sort by. Prepend '-' for descending.
+      schema:
+        type: string
     IdPath:
       name: id
       in: path
@@ -96,12 +102,6 @@ components:
       name: include
       in: query
       description: Comma-separated list of relationships to include.
-      schema:
-        type: string
-    Sort:
-      name: sort
-      in: query
-      description: Comma-separated list of fields to sort by. Prepend '-' for descending.
       schema:
         type: string
     PageLimit:
