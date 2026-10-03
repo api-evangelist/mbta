@@ -54,33 +54,6 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 components:
-  parameters:
-    Sort:
-      name: sort
-      in: query
-      description: Comma-separated list of fields to sort by. Prepend '-' for descending.
-      schema:
-        type: string
-    PageLimit:
-      name: page[limit]
-      in: query
-      description: Maximum number of resources to return.
-      schema:
-        type: integer
-        minimum: 1
-    Include:
-      name: include
-      in: query
-      description: Comma-separated list of relationships to include.
-      schema:
-        type: string
-    PageOffset:
-      name: page[offset]
-      in: query
-      description: Offset (0-based) into the collection.
-      schema:
-        type: integer
-        minimum: 0
   responses:
     JsonApiOk:
       description: Successful JSON:API response.
@@ -99,6 +72,33 @@ components:
                 type: object
     BadRequest:
       description: Bad request - invalid parameters.
+  parameters:
+    PageOffset:
+      name: page[offset]
+      in: query
+      description: Offset (0-based) into the collection.
+      schema:
+        type: integer
+        minimum: 0
+    PageLimit:
+      name: page[limit]
+      in: query
+      description: Maximum number of resources to return.
+      schema:
+        type: integer
+        minimum: 1
+    Include:
+      name: include
+      in: query
+      description: Comma-separated list of relationships to include.
+      schema:
+        type: string
+    Sort:
+      name: sort
+      in: query
+      description: Comma-separated list of fields to sort by. Prepend '-' for descending.
+      schema:
+        type: string
   securitySchemes:
     apiKeyHeader:
       type: apiKey
