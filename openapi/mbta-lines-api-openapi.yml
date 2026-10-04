@@ -46,8 +46,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    NotFound:
-      description: Resource not found.
     JsonApiOk:
       description: Successful JSON:API response.
       content:
@@ -63,13 +61,9 @@ components:
                 type: object
               meta:
                 type: object
+    NotFound:
+      description: Resource not found.
   parameters:
-    IdPath:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
     PageOffset:
       name: page[offset]
       in: query
@@ -77,10 +71,10 @@ components:
       schema:
         type: integer
         minimum: 0
-    Sort:
-      name: sort
-      in: query
-      description: Comma-separated list of fields to sort by. Prepend '-' for descending.
+    IdPath:
+      name: id
+      in: path
+      required: true
       schema:
         type: string
     PageLimit:
@@ -90,6 +84,12 @@ components:
       schema:
         type: integer
         minimum: 1
+    Sort:
+      name: sort
+      in: query
+      description: Comma-separated list of fields to sort by. Prepend '-' for descending.
+      schema:
+        type: string
   securitySchemes:
     apiKeyHeader:
       type: apiKey
