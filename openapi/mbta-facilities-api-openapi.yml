@@ -64,11 +64,17 @@ components:
                 type: object
               meta:
                 type: object
-    NotFound:
-      description: Resource not found.
     RateLimited:
       description: Too many requests.
+    NotFound:
+      description: Resource not found.
   parameters:
+    IdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
     PageOffset:
       name: page[offset]
       in: query
@@ -76,12 +82,6 @@ components:
       schema:
         type: integer
         minimum: 0
-    IdPath:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
     PageLimit:
       name: page[limit]
       in: query
@@ -89,16 +89,16 @@ components:
       schema:
         type: integer
         minimum: 1
-    Sort:
-      name: sort
-      in: query
-      description: Comma-separated list of fields to sort by. Prepend '-' for descending.
-      schema:
-        type: string
     Include:
       name: include
       in: query
       description: Comma-separated list of relationships to include.
+      schema:
+        type: string
+    Sort:
+      name: sort
+      in: query
+      description: Comma-separated list of fields to sort by. Prepend '-' for descending.
       schema:
         type: string
   securitySchemes:

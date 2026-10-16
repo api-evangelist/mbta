@@ -64,6 +64,12 @@ components:
     NotFound:
       description: Resource not found.
   parameters:
+    IdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
     PageOffset:
       name: page[offset]
       in: query
@@ -71,12 +77,6 @@ components:
       schema:
         type: integer
         minimum: 0
-    IdPath:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
     PageLimit:
       name: page[limit]
       in: query
